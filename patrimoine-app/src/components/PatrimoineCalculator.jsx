@@ -24,7 +24,7 @@ const PatrimoineCalculator = ({ patrimoine }) => {
         className="form-control custom-datepicker" 
       />
       <button onClick={calculerValeurPatrimoine} className="mt-3 ms-2">Valider</button>
-      {valeurPatrimoine !== null && <p>Valeur du Patrimoine : {formatNumber(valeurPatrimoine) + ' Ar'}</p>}
+      {valeurPatrimoine !== null && <p className='fs-4 mt-3'>Valeur du Patrimoine : {formatNumber(valeurPatrimoine) + ' Ar'}</p>}
     </div>
   );
 };
