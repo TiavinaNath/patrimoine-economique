@@ -1,8 +1,12 @@
-import { readFile, writeFile } from "./data/index.js";
-import Patrimoine from "./models/Patrimoine.js";
-import Personne from "./models/Personne.js";
-import Flux from "./models/possessions/Flux.js";
-import Possession from "./models/possessions/Possession.js";
+
+
+// index.js
+
+import { readFile, writeFile } from "./backend/data/index.js";
+import Patrimoine from "./backend/models/Patrimoine.js";
+import Personne from "./backend/models/Personne.js";
+import Flux from "./backend/models/possessions/Flux.js";
+import Possession from "./backend/models/possessions/Possession.js";
 const john = new Personne("John Doe");
 
 const macBookPro = new Possession(john, "MacBook Pro", 4000000, new Date("2023-12-25"), null, 5);

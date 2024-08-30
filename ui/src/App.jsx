@@ -1,66 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import Argent from '../../models/possessions/Argent';
-import BienMateriel from '../../models/possessions/BienMateriel';
-import Flux from '../../models/possessions/Flux';
-import Possession from '../../models/possessions/Possession';
-import Patrimoine from '../../models/Patrimoine';
-import Personne from '../../models/Personne';
-import PossessionsTable from './components/PossessionsTable';
-import PatrimoineCalculator from './components/PatrimoineCalculator';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const App = () => {
+// ui/src/App.jsx 
 
-    const [patrimoine, setPatrimoine] = useState(null);
-  
-    useEffect(() => {
-      fetch('/data.json')
-        .then((res) => res.json())
-        .then((data) => {
-          const personneData = data.find(item => item.model === 'Personne').data;
-          const possessionsData = data.find(item => item.model === 'Patrimoine').data.possessions;
-  
-          const personne = new Personne(personneData.nom);
-          const possessions = possessionsData.map((item) => {
-            if (item.jour) {
-              return new Flux (
-                personne, 
-                item.libelle,
-                item.valeurConstante, 
-                new Date(item.dateDebut), 
-                item.dateFin? new Date(item.dateFin) : null,
-                item.tauxAmortissement, 
-                item.jour);
-            } else {
-              return new Possession (
-                personne, 
-                item.libelle, 
-                item.valeur, 
-                new Date(item.dateDebut), 
-                item.dateFin? new Date(item.dateFin) : null, 
-                item.tauxAmortissement);
-            }
-          });
-  
-          const patrimoineInstance = new Patrimoine(personne, possessions);
-          setPatrimoine(patrimoineInstance);
-        });
-    }, []);
-  
-    if (!patrimoine) {
-      return <div>Chargement en cours...</div>;
-    }
-  
-    return (
-      <div className='vh-100 d-flex flex-column justify-content-center align-items-center'>
-        <div className='container text-center'>
-        <h1 className='mb-4'>Patrimoine de {patrimoine.possesseur.nom}</h1>
-          <PossessionsTable possessions={patrimoine.possessions} />
-          <PatrimoineCalculator patrimoine={patrimoine} />
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import PatrimoinePage from "./components/PatrimoinePage";
+import PossessionListPage from "./components/PossessionListPage";
+import CreatePossessionPage from "./components/CreatePossessionPage";
+import UpdatePossessionPage from "./components/UpdatePossessionPage";
+import "./App.css";
+import "./components/css/PatrimoinePage.css"; 
+import './components/possession/css/NewPossessionForm.css';
+import './components/possession/css/PossessionList.css';
+import './components/possession/css/UpdatePossessionForm.css';
+
+function App() {
+  return (
+    <Router>
+      <header className="p-2" style={{ backgroundColor: '#fffaf0' }}>
+          <div className="d-flex">
+            <div className="d-flex flex-row justify-content-around">
+              <Link to="/patrimoine" className="btn"  style={{ fontSize: '1.5rem', color: 'black'}}>
+                Patrimoine
+              </Link>
+              <Link to="/possession" className="btn"  style={{ fontSize: '1.5rem', color: 'black' }}>
+                Possession
+              </Link>
+            </div>
         </div>
-      </div>
-    );
-  }
-  
-  export default App;
+      </header>
+
+      <Routes>
+        <Route path="/" element={<PatrimoinePage />} />
+        <Route path="/patrimoine" element={<PatrimoinePage />} />
+        <Route path="/possession" element={<PossessionListPage />} />
+        <Route path="/possession/create" element={<CreatePossessionPage />} />
+        <Route
+          path="/possession/:libelle/update"
+          element={<UpdatePossessionPage />}
+        />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

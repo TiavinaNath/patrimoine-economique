@@ -1,0 +1,86 @@
+.container {
+  padding: 20px !important;
+  margin-bottom: 2dvh !important;
+}
+
+.row {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.col-md-4 {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+}
+
+.col-md-8 {
+  background-color: #fffaf0 !important; 
+  border-radius: 8px !important;
+  padding: 20px !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-end !important;
+}
+
+.chart-container {
+  width: 100% !important;
+  height: 50dvh !important;
+}
+
+.GetValue {
+  width: 70% !important; 
+  height: 30%;
+  margin: 30px auto 0 !important; 
+  background-color: #fffaf0 !important;
+  border-radius: 8px !important;
+  padding: 20px !important; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important;
+  display: flex !important;
+  flex-direction: column !important; 
+  align-items: center !important;
+
+}
+
+.input-section {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 70% !important; 
+  margin-bottom: 15px !important; 
+}
+
+.date-picker {
+  background-color: #fffaf0 !important;
+  border: 1px solid #c1b29d !important;
+  color: #4b3f2f !important;
+  padding: 5px !important;
+  border-radius: 4px !important;
+  width: 70% !important; 
+}
+
+.jour {
+  width: 32.75% !important;
+}
+
+.custom-button {
+  background-color: #cdaf95 !important; 
+  border-color: #cdaf95 !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  margin-left: 10px !important;
+}
+
+.custom-button:hover,
+.custom-button:focus {
+  background-color: #b89984 !important;
+  border-color: #b89984 !important;
+}
+
+.value-result {
+  margin-top: 20px !important;
+  color: #4b3f2f !important;
+  font-weight: bold !important;
+}
