@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import PossessionList from "../dumbComponents/possession/PossessionList";
 
+
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
+
 function PossessionListPage() {
   const [possessions, setPossessions] = useState([]);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/possession", {
+      const response = await fetch(`${apiUrl}/possession`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
       });

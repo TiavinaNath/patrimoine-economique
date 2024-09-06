@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import UpdatePossessionForm from "../dumbComponents/possession/UpdatePossessionForm";
 
+
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
+
 const UpdatePossessionPage = () => {
   const { libelle } = useParams();
   const [dateFin, setDateFin] = useState("");
@@ -11,7 +14,7 @@ const UpdatePossessionPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:3000/possession/${libelle}`, {
+    const response = await fetch(`${apiUrl}/possession/${libelle}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ dateFin, newLibelle }),
