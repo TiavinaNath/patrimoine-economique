@@ -7,6 +7,7 @@ import PatrimoinePage from "./components/PatrimoinePage";
 import PossessionListPage from "./components/PossessionListPage";
 import CreatePossessionPage from "./components/CreatePossessionPage";
 import UpdatePossessionPage from "./components/UpdatePossessionPage";
+import Header from "./components/Header"
 import "./App.css";
 import "./components/css/PatrimoinePage.css"; 
 import './components/possession/css/NewPossessionForm.css';
@@ -16,19 +17,7 @@ import './components/possession/css/UpdatePossessionForm.css';
 function App() {
   return (
     <Router>
-      <header className="p-2" style={{ backgroundColor: '#fffaf0' }}>
-          <div className="d-flex">
-            <div className="d-flex flex-row justify-content-around">
-              <Link to="/patrimoine" className="btn"  style={{ fontSize: '1.5rem', color: 'black'}}>
-                Patrimoine
-              </Link>
-              <Link to="/possession" className="btn"  style={{ fontSize: '1.5rem', color: 'black' }}>
-                Possession
-              </Link>
-            </div>
-        </div>
-      </header>
-
+      <Header />
       <Routes>
         <Route path="/" element={<PatrimoinePage />} />
         <Route path="/patrimoine" element={<PatrimoinePage />} />
