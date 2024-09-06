@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import Patrimoine from '../models/Patrimoine.js';
 import Possession from '../models/possessions/Possession.js';
+import Flux from '../models/possessions/Flux.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,16 +31,27 @@ export const getValeurPatrimoineRange = async (req, res) => {
       return res.status(404).json({ message: 'Patrimoine non trouvé' });
     }
 
-    const possessions = patrimoineData.data.possessions.map(p =>
-      new Possession(
+    const possessions = patrimoineData.data.possessions.map(p => {
+      if (p.jour) {
+        return new Flux(
+          p.possesseur,
+          p.libelle,
+          p.valeurConstante,
+          new Date(p.dateDebut),
+          p.dateFin ? new Date(p.dateFin) : null,
+          p.tauxAmortissement,
+          p.jour
+        );
+      }
+      return new Possession(
         p.possesseur,
         p.libelle,
         p.valeur,
         new Date(p.dateDebut),
         p.dateFin ? new Date(p.dateFin) : null,
         p.tauxAmortissement
-      )
-    );
+      );
+    });
 
     const patrimoine = new Patrimoine(patrimoineData.data.possesseur, possessions);
 
@@ -78,16 +90,27 @@ export const getValeurPatrimoine = async (req, res) => {
       return res.status(404).json({ message: 'Patrimoine non trouvé' });
     }
 
-    const possessions = patrimoineData.data.possessions.map(p =>
-      new Possession(
+    const possessions = patrimoineData.data.possessions.map(p => {
+      if (p.jour) {
+        return new Flux(
+          p.possesseur,
+          p.libelle,
+          p.valeurConstante,
+          new Date(p.dateDebut),
+          p.dateFin ? new Date(p.dateFin) : null,
+          p.tauxAmortissement,
+          p.jour
+        );
+      }
+      return new Possession(
         p.possesseur,
         p.libelle,
         p.valeur,
         new Date(p.dateDebut),
         p.dateFin ? new Date(p.dateFin) : null,
         p.tauxAmortissement
-      )
-    );
+      );
+    });
 
     const patrimoine = new Patrimoine(patrimoineData.data.possesseur, possessions);
     const totalValeur = patrimoine.getValeur(parsedDate);
