@@ -3,16 +3,16 @@
 // ui/src/App.jsx 
 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import PatrimoinePage from "./components/PatrimoinePage";
-import PossessionListPage from "./components/PossessionListPage";
-import CreatePossessionPage from "./components/CreatePossessionPage";
-import UpdatePossessionPage from "./components/UpdatePossessionPage";
-import Header from "./components/Header"
+import PatrimoinePage from "./components/smartComponents/PatrimoinePage";
+import PossessionListPage from "./components/smartComponents/PossessionListPage";
+import CreatePossessionPage from "./components/smartComponents/CreatePossessionPage";
+import UpdatePossessionPage from "./components/smartComponents/UpdatePossessionPage";
+import Header from "./components/smartComponents/Header"
 import "./App.css";
 import "./components/css/PatrimoinePage.css"; 
-import './components/possession/css/NewPossessionForm.css';
-import './components/possession/css/PossessionList.css';
-import './components/possession/css/UpdatePossessionForm.css';
+import './components/dumbComponents/possession/css/NewPossessionForm.css';
+import './components/dumbComponents/possession/css/PossessionList.css';
+import './components/dumbComponents/possession/css/UpdatePossessionForm.css';
 
 function App() {
   return (

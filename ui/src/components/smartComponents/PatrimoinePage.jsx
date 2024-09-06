@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Chart from "./patrimoine/Chart";
-import DateDay from "./patrimoine/DateDay";
-import GetValue from "./patrimoine/GetValue";
-import "./css/PatrimoinePage.css";
+import Chart from "../dumbComponents/patrimoine/Chart";
+import DateDay from "../dumbComponents/patrimoine/DateDay";
+import GetValue from "../dumbComponents/patrimoine/GetValue";
+import "../css/PatrimoinePage.css";
 
 function PatrimoinePage() {
   const [dateDebut, setDateDebut] = useState(null);
