@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Table, Button, Container } from "react-bootstrap";
 import './css/PossessionList.css';
 
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
+
 function PossessionList({ possessions, refetchPossessions }) {
 
   const formatNumber = (number) => {
@@ -11,7 +13,7 @@ function PossessionList({ possessions, refetchPossessions }) {
 
   const closePossession = async (libelle) => {
     try {
-      const response = await fetch(`http://localhost:3000/possession/${libelle}/close`, {
+      const response = await fetch(`${apiUrl}/possession/${libelle}/close`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
       });
